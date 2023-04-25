@@ -3,7 +3,7 @@
 
 # IMPORT
 import socket, struct , time
-import Config
+import config
 
 # SET UP
 arm_ip   = '10.10.0.14'
@@ -70,15 +70,15 @@ class Arm:
             print('Robot start moving')
             # from config
             # Start position
-            print(Config.start_pos)
-            self.movej_to_position(Config.start_pos)
+            print(config.start_pos)
+            self.movej_to_position(config.start_pos)
             # End position
-            print(Config.end_pos)
-            self.movej_to_position(Config.end_pos)
+            print(config.end_pos)
+            self.movej_to_position(config.end_pos)
             # Start position
-            self.movej_to_position(Config.start_pos)
+            self.movej_to_position(config.start_pos)
  
 if __name__ == '__main__':
-    Arm = Arm()
-    Arm.main()
+    arm = Arm()
+    arm.main()
 

@@ -56,5 +56,5 @@ class Conveyor():
 
 
 if __name__ == '__main__':
-      Conveyor = Conveyor()
-      Conveyor.main()
+      conveyor = Conveyor()
+      conveyor.main()
