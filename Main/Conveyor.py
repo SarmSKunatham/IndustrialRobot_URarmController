@@ -34,10 +34,11 @@ class Conveyor():
       print("Conveyor power on")
 
    def run_conveyor(self, speed=10):
+      self.conveyor.sendall(b'jog_stop\n')
       command = f'set_vel,conv,{speed}\n'
       self.conveyor.sendall(bytes(command, "UTF-8"))
       # self.conveyor_recv = self.conveyor.recv(20)
-      # print (self.conveyor_recv)
+      # print (self.conveyor_recv)``
       self.conveyor.sendall(b'jog_fwd,conv,0\n')
       # self.conveyor_recv = self.conveyor.recv(20)
       # print (self.conveyor_recv)
