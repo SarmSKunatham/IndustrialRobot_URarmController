@@ -1,9 +1,9 @@
 ####### Command for control conveyor #################
 #### activate tcp        = activate,tcp
-#### power on servo      = pwr_on,conv,0
 #### power off servo     = pwr_off,conv,0
 #### set velocity x mm/s = set_vel,conv,x   # x = 0 to 200
 #### jog forward         = jog_fwd,conv,0
+#### power on servo      = pwr_on,conv,0
 #### jog backward        = jog_bwd,conv,0
 #### stop conveyor       = jog_stop,conv,0
 #########################################################

@@ -9,7 +9,7 @@
 #########################################################
 
 import socket,time
-import Config
+import config
 
 class Conveyor():
    def __init__(self, host='10.10.0.98', conveyor_port = 2002):
