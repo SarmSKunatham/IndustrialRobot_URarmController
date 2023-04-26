@@ -9,14 +9,16 @@
 #########################################################
 
 import socket,time
-import Config
+import config
 
 class Conveyor():
    def __init__(self, host='10.10.0.98', conveyor_port = 2002):
       self.host = host
       self.conveyor_port = conveyor_port
       self.conveyor_recv = None
+      self.conveyor = None
       print("Conveyor init")
+      print(f"HOST: {self.host}, PORT: {self.conveyor_port}")
       socket_server = socket.socket()
       socket_server.bind((self.host, self.conveyor_port))
       print('Conveyor bind')
@@ -27,26 +29,27 @@ class Conveyor():
       print("Conveyor accept")
       print("Connection from: " + str(addr))
       # Activate tcp
-      self.conveyor.sendall(b'activate,tcp,0.0\n')
-      print("Conveyor activate")
-      # Power on servo
-      self.conveyor.sendall(b'pwr_on,conv,0\n')
+      self.send_command("activate,tcp")
+      print("Conveyor activate tcp")
+      self.send_command("pwr_on,conv,0")
       print("Conveyor power on")
+   
+   def send_command(self, cmd):
+       self.conveyor.sendall(f"{cmd}\n".encode())
+       time.sleep(0.5)
 
    def run_conveyor(self, speed=10):
-      self.conveyor.sendall(b'jog_stop\n')
-      command = f'set_vel,conv,{speed}\n'
-      self.conveyor.sendall(bytes(command, "UTF-8"))
-      # self.conveyor_recv = self.conveyor.recv(20)
-      # print (self.conveyor_recv)``
-      self.conveyor.sendall(b'jog_fwd,conv,0\n')
-      # self.conveyor_recv = self.conveyor.recv(20)
-      # print (self.conveyor_recv)
+      self.send_command("jog_stop,conv,0")
+      print("Reset conveyor")
+      self.send_command(f"set_vel,conv,{speed}")
+      print("Set speed to 10")
+
+      self.send_command("jog_fwd,conv,0")
+      print('Start Moving')
    
    def stop_conveyor(self):
-      self.conveyor.sendall(b'jog_stop,conv,0\n')
-      # self.conveyor_recv = self.conveyor.recv(20)
-      # print (self.conveyor_recv)
+      self.send_command("jog_stop,conv,0")
+      print('Stop conveyor')
 
    def main(self):
       # Move conveyor
@@ -55,6 +58,6 @@ class Conveyor():
       self.stop_conveyor()
 
 
-if __name__ == '__main__':
-      conveyor = Conveyor()
-      conveyor.main()
+# if __name__ == '__main__':
+      # conveyor = Conveyor()
+      # conveyor.main()

@@ -10,6 +10,8 @@ class Camera():
         self.angle = None
         self.x = None
         self.y = None
+        self.camera_ip = camera_ip
+        self.camera_port = camera_port
         self.camera = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.camera.connect((self.camera_ip, self.camera_port))
         print('Camera Activated')

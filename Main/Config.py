@@ -20,8 +20,12 @@ start_pos = [0.116,-0.3,0.2,0,-3.143,0]
 end_pos = start_pos.copy()
 end_pos[2] -= 0.305
 
+# Box position
+box_pos = [0.00632,-0.33138,-0.105,0.014,-3.126,0.06]
+
 # Released position
-released_pos = [0.008,-0.507,-0.18,0.014,-3.126,0.06]
+# released_pos = [0.008,-0.507,-0.18,0.014,-3.126,0.06]
+released_pos = [0.00629,-0.491,-0.105,0.014,-3.126,0.06]
 
 released_path = [
     # Move z direction
