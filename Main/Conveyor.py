@@ -37,23 +37,16 @@ class Conveyor():
       self.conveyor.sendall(b'jog_stop\n')
       command = f'set_vel,conv,{speed}\n'
       self.conveyor.sendall(bytes(command, "UTF-8"))
-      # self.conveyor_recv = self.conveyor.recv(20)
-      # print (self.conveyor_recv)``
       self.conveyor.sendall(b'jog_fwd,conv,0\n')
-      # self.conveyor_recv = self.conveyor.recv(20)
-      # print (self.conveyor_recv)
    
    def stop_conveyor(self):
       self.conveyor.sendall(b'jog_stop,conv,0\n')
-      # self.conveyor_recv = self.conveyor.recv(20)
-      # print (self.conveyor_recv)
 
    def main(self):
       # Move conveyor
       self.run_conveyor()
       time.sleep(10)
       self.stop_conveyor()
-
 
 if __name__ == '__main__':
       conveyor = Conveyor()
