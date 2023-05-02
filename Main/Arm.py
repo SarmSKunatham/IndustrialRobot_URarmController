@@ -63,7 +63,7 @@ class Arm:
 
         def movel_to_position(self, position, speed = 1, acceleration = 0.25):
             command = "movel(p{}, {}, {}, 3, 0)\n".format(position, speed, acceleration)
-            self.send_command("movel(p{}, {}, {}, 3, 0)\n".format(position, speed, acceleration))
+            self.send_command("movel(p{}, {}, {}, 2, 0)\n".format(position, speed, acceleration))
             # time.sleep(3)
         
         def main(self):

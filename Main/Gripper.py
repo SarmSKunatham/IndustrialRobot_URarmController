@@ -7,8 +7,10 @@ class Gripper:
         self.gripper_recv = None
         self.gripper = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.gripper.connect((self.gripper_ip, self.gripper_port))
+        time.sleep(2)
         self.gripper.send(b'GET ACT\n')
         self.gripper_recv = str(self.gripper.recv(10), 'UTF-8')
+        print(self.gripper_recv)
         if '1' in self.gripper_recv:
             print('Gripper Activated')
         else:
@@ -20,7 +22,7 @@ class Gripper:
         # self.gripper_recv = str(self.gripper.recv(255), 'UTF-8')
         # print(self.gripper_recv)
         print('Open Gripper!')
-        # time.sleep(2)
+        time.sleep(0.5)
 
     def gripper_close(self):
         '''Close the gripper'''
@@ -28,7 +30,7 @@ class Gripper:
         print('Close Gripper!')
         # self.gripper_recv = str(self.gripper.recv(255), 'UTF-8')
         # print(self.gripper_recv)
-        # time.sleep(2)
+        time.sleep(0.5)
 
     def main(self):
         '''Main function'''
@@ -38,4 +40,6 @@ class Gripper:
 
 # if __name__ == '__main__':
 #     gripper = Gripper()
+#     gripper.gripper_open()
+#     gripper.gripper_close()
 #     gripper.main()

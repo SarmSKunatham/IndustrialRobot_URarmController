@@ -25,7 +25,7 @@ class Conveyor():
       socket_server.listen()
       print('Conveyor listen on port ', self.conveyor_port)
       self.conveyor, addr = socket_server.accept()
-      time.sleep(2)
+      time.sleep(0.5)
       print("Conveyor accept")
       print("Connection from: " + str(addr))
       # Activate tcp
@@ -41,7 +41,7 @@ class Conveyor():
    def run_conveyor(self, speed=10):
       self.send_command("jog_stop,conv,0")
       print("Reset conveyor")
-      self.send_command(f"set_vel,conv,{speed}")
+      # self.send_command(f"set_vel,conv,{speed}")
       print("Set speed to 10")
 
       self.send_command("jog_fwd,conv,0")
@@ -58,6 +58,6 @@ class Conveyor():
       self.stop_conveyor()
 
 
-# if __name__ == '__main__':
-      # conveyor = Conveyor()
-      # conveyor.main()
+if __name__ == '__main__':
+      conveyor = Conveyor()
+      conveyor.stop_conveyor()
