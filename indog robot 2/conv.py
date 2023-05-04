@@ -33,7 +33,7 @@ def main():
    # print (c_recv)
    time.sleep(1)
 
-   c.sendall(b'set_vel,conv,10\n')
+   # c.sendall(b'set_vel,conv,10\n')
    # c_recv = c.recv(20)
    # print (c_recv)
    c.sendall(b'jog_fwd,conv,0\n')
